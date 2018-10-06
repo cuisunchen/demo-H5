@@ -1,0 +1,1 @@
+export const tip = state => state.tip;
