@@ -7,4 +7,23 @@ const mysql = require('mysql');
      password:'111111',
      database:'elm'
  })
- 
+
+ let query = function(sql, ...params){
+    return new Promise((resolve,reject)=>{
+        pool.getConnection((err,connection)=>{
+            if(err){
+                resolve(err)
+            }else{
+                connection.query(sql,values,(err,data)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve(data)
+                    }
+                    connection.release();
+                })
+            }
+        })
+    })
+ }
+ module.exports = query;
