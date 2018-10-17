@@ -1,8 +1,6 @@
-<!-- home -->
+<!--  -->
 <template>
-    <div class="home">
-        <p v-for="item in 20">asdfasdg</p>
-    </div>
+    <div>wode</div>
 </template>
 
 <script>
@@ -15,8 +13,7 @@
 
     computed: {},
     methods: {},
-    components: {
-    },
+    components: {},
 }
 </script>
 
