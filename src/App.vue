@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="head" v-if="hide">
-        <x-Header :right-options="{showMore: true}" @on-click-more="showMenus = true">{{headCon}}</x-Header>
+        <x-Header :right-options="{showMore: true}" style="background-color:#1FB5FC;" @on-click-more="showMenus = true">{{headCon}}</x-Header>
     </div>
 
     <div class="content">
@@ -9,7 +9,9 @@
     </div>
     
     <div class="foot" v-if="hide">      
-      <router-link :to="item.pageUrl" tag="div" class="tab_item" v-for="(item,index) in tab" :key="index">{{item.name}}</router-link>
+      <router-link :to="item.pageUrl" tag="div" class="tab_item" v-for="(item,index) in tab" :key="index">
+        <p>{{item.name}}</p>
+      </router-link>
     </div>
     <toast v-model="tipSet.showPositionValue" type="text" :time="2000" is-show-mask :text="tip" :position="tipSet.position"></toast> 
   </div>
@@ -33,8 +35,9 @@ export default {
       hide:true,
       tab:[
         {name:'首页',icoUrl:'',pageUrl:'/home'},
-        {name:'信息',icoUrl:'',pageUrl:'/infos'},
-        {name:'新闻',icoUrl:'',pageUrl:'/news'},
+        {name:'搜老板',icoUrl:'',pageUrl:'/searchBoss'},
+        {name:'情报局',icoUrl:'',pageUrl:'/infos'},
+        {name:'企业库',icoUrl:'',pageUrl:'/news'},
         {name:'我的',icoUrl:'',pageUrl:'/mine'},
       ],
       defaultTabIndex:0,
@@ -112,6 +115,7 @@ export default {
 <style lang="less">
 html,body{
     height: 100%;
+    background-color: #f4f4f4;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -119,7 +123,7 @@ html,body{
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   font-size: .12rem;
-  .head{
+  >.head{
     position: fixed;
     top: 0;
     left: 0;
@@ -128,7 +132,7 @@ html,body{
   >.content{
     padding: 46px 0 .5rem;
   }
-  .foot{
+  >.foot{
     position: fixed;
     bottom: 0;
     width: 100%;

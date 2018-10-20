@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import login from '@/pages/login/login'
 import home from '@/pages/home/home'
+import searchBoss from '@/pages/searchBoss/searchBoss'
 import sub1 from '@/pages/sub1/sub1'
 import info from '@/pages/infos/info'
 import news from '@/pages/news/new'
@@ -21,6 +22,11 @@ const router = new Router({
       path: '/home',
       name: 'home',
       component: home
+    },
+    {
+      path: '/searchBoss',
+      name: 'searchBoss',
+      component: searchBoss
     },
     {
       path: '/sub1',
