@@ -15,7 +15,7 @@
             </div>
             <div class="hot">
                 <div class="tit">热点|</div>
-                <div v-for="(item,index) in hotData">长春长生</div>
+                <div v-for="(item,index) in hotData" :key="index">长春长生</div>
             </div>
         </div>
         <div class="news">
@@ -32,8 +32,28 @@
                 </div>                
             </div>
         </div>
-        <div class="hots"></div>
-        <div class="newCPY"></div>
+        <div class="hots">
+            <p>热点唯独</p>
+            <div class="hots_wrap">
+                <div class="hot_item" v-for="(item,index) in hots" :key="index">
+                    <div class="hot_item_wrap">
+                        <div class="ico">
+                            <img :src="item.imgUrl" alt="">
+                        </div>
+                        <div class="name">企业名录</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="newCPY">
+            <p class="title">新注册企业</p>
+            <div class="itemWrap">
+                <div class="item" v-for="(item,index) in newCpy" :key="index">
+                    <p class="cpyName"><span class="dot"></span><em>{{item.name}}</em></p>
+                    <p class="bossName">{{item.peo}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -62,7 +82,6 @@ import api from "../../common/js/api.js"
         getNews(){
             api.getNews().then(ret => {
                 if( ret.data.status == 200 ){
-                    console.log(ret)
                     this.news = ret.data.data.news
                     this.hots = ret.data.data.hot
                     this.newCpy = ret.data.data.newCpy
@@ -173,6 +192,83 @@ import api from "../../common/js/api.js"
                 }
             }
             
+        }
+        .hots{
+            background-color: #fff;
+            padding: .1rem;
+            p{
+                font-size: .14rem;
+                color: #949494;
+                text-align: center;
+                line-height: .6rem;
+            }
+            .hots_wrap{
+                font-size: 0;
+                .hot_item{
+                    display: inline-block;
+                    width: 50%;
+                    padding: 0 .1rem;
+                    box-sizing: border-box;
+                    margin-bottom: .1rem;
+                    .hot_item_wrap{
+                        background-color: #fcf8f8;
+                        padding: .1rem .14rem;
+                        font-size: 0;
+                        >div{
+                            display: inline-block;
+                            font-size: .16rem;
+                            vertical-align: middle;                            
+                        }
+                        .ico{
+                            width: .4rem;
+                            height: .4rem;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .name{
+                            font-size: .16rem;
+                            color: #666;
+                            padding-left: .1rem;
+                            box-sizing: border-box;
+                        }
+                    }
+                }
+            }
+        }
+        .newCPY{
+            padding: 0 .1rem;
+            background-color: #fff;
+            .title{
+                color: #949494;
+                line-height: .5rem;
+            }
+            .itemWrap{
+                .item{
+                    color: #333;
+                    margin-bottom: .1rem;
+                    .cpyName{                        
+                        line-height: .12rem;
+                        .dot{
+                            display: inline-block;
+                            width: .04rem;
+                            height: .04rem;
+                            background-color: #ccc;
+                            border-radius: 50%;
+                            vertical-align: middle;
+                            margin-right: .06rem;
+                        }
+                        em{
+                            vertical-align: middle;
+                        }
+                    }
+                    .bossName{
+                        text-indent: .1rem;
+                        line-height: .24rem
+                    }
+                }
+            }
         }
     }
 </style>

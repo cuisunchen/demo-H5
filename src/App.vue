@@ -122,12 +122,13 @@ html,body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  font-size: .12rem;
+  font-size: .12rem;  
   >.head{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100%;  
+    z-index: 9;  
   }
   >.content{
     padding: 46px 0 .5rem;
