@@ -23,8 +23,10 @@
 </template>
 
 <script>
-import { Flexbox,FlexboxItem,XButton } from 'vux'
+import { XButton } from 'vux'
 import { mapMutations } from 'vuex';
+import { sessionObj } from '../../common/js/tools.js'
+import qs from "qs"
  export default {
     name:'',
     data () {
@@ -32,15 +34,29 @@ import { mapMutations } from 'vuex';
             user:{},
         };
     },
-
-    computed: {},
+    computed: {
+    },
     methods: {
-        login(){      
-            this.setTip('请求错误')    
+        login(){            
+            if(!this.user.name && !this.user.password){return}   
+            if(!this.user.name){
+                this.setTip('用户名不能为空')
+                return
+            }else if(!this.user.password){
+                this.setTip('密码不能为空')
+                return
+            } 
+            this.user.name = this.user.name.toLowerCase()
+            this.user.password = this.user.password.toLowerCase()
             this.api.userLogin(this.user).then(res =>{
-                console.log(res)
+                if(res.data.status == 200){
+                    sessionObj('userName',this.user.name)
+                    this.$router.push({path:'./home'})
+                }else{
+                    this.setTip(res.data.msg)
+                }
             }).catch(error => {
-                console.log('lava' + error)
+                throw new Error(error)
                 this.setTip('请求错误')
             })
         },   
@@ -49,8 +65,6 @@ import { mapMutations } from 'vuex';
         })     
     },
     components: {
-        Flexbox,
-        FlexboxItem,
         XButton 
     },
 }
@@ -61,7 +75,10 @@ import { mapMutations } from 'vuex';
 .login{
     height: 100%;
     background-color: #00a0dc;
-    position: relative;
+        position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
     .content{
         width: 100%;
         height: 3rem;
@@ -98,6 +115,7 @@ import { mapMutations } from 'vuex';
                 & input{
                     height: .4rem;
                     width: 100%;
+                    font-size: .14rem;
                     border-radius: .04rem;
                     text-indent: .12rem
                 } 
