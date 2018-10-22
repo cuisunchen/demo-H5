@@ -1,0 +1,93 @@
+.setLine(@c: #939393){
+    content: ' ';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    height: 200%;
+    border: 1px solid @c;
+    color: @c;
+    transform-origin: left top;
+    transform: scale(0.5)
+}
+.setTopLine(@c: #939393) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid @c;
+    color: @c;
+    transform-origin: 0 0;
+    transform: scaleY(0.5);
+}
+
+.setBottomLine(@c: #939393) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid @c;
+    color: @c;
+    transform-origin: 0 100%;
+    transform: scaleY(0.5);
+}
+
+.setLeftLine(@c: #939393) {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-left: 1px solid @c;
+    color: @c;
+    transform-origin: 0 0;
+    transform: scaleX(0.5);
+}
+
+.setRightLine(@c: #939393) {
+    content: " ";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    bottom: 0;
+    border-right: 1px solid @c;
+    color: @c;
+    transform-origin: 100% 0;
+    transform: scaleX(0.5);
+}
+
+.border-1px, .border-1px-l, .border-1px-r, .border-1px-t, .border-1px-b{
+    position: relative;
+}
+
+.border-1px{
+    &::after{
+        .setLine();
+    }
+}
+.border-1px-l{
+    &::after{
+        .setLeftLine();
+    }
+}
+.border-1px-r{
+    &::after{
+        .setRightLine();
+    }
+}
+.border-1px-t{
+    &::after{
+        .setTopLine();
+    }
+}
+.border-1px-b{
+    &::after{
+        .setBottomLine();
+    }
+}
