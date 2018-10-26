@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import login from '@/pages/login/login'
 import home from '@/pages/home/home'
 import searchBoss from '@/pages/searchBoss/searchBoss'
-import sub1 from '@/pages/sub1/sub1'
+import cpy_store from '@/pages/cpyStore/cpy_store'
 import info from '@/pages/infos/info'
 import news from '@/pages/news/new'
 import mine from '@/pages/mine/mine'
+
 
 Vue.use(Router)
 
@@ -29,9 +29,9 @@ const router = new Router({
       component: searchBoss
     },
     {
-      path: '/sub1',
-      name: 'sub1',
-      component: sub1
+      path: '/cpy_store',
+      name: 'cpy_store',
+      component: cpy_store
     },
     {
       path: '/info',

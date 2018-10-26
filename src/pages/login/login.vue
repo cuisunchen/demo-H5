@@ -25,7 +25,7 @@
 <script>
 import { XButton } from 'vux'
 import { mapMutations } from 'vuex';
-import { sessionObj } from '../../common/js/tools.js'
+import { sessionObj,localObj } from '../../common/js/tools.js'
 import qs from "qs"
  export default {
     name:'',
@@ -51,12 +51,13 @@ import qs from "qs"
             this.api.userLogin(this.user).then(res =>{
                 if(res.data.status == 200){
                     sessionObj('userName',this.user.name)
+                    localObj('token', res.data.token)
                     this.$router.push({path:'./home'})
                 }else{
                     this.setTip(res.data.msg)
                 }
             }).catch(error => {
-                throw new Error(error)
+                // throw new Error(error)
                 this.setTip('请求错误')
             })
         },   

@@ -7,9 +7,9 @@ const homeData = {
     hot:{},
     newCpy:{}
 }
-router.
-post('/news', async (ctx,next) => {
-
+router
+.post('/news', async (ctx,next) => {
+    
     await api.getNews().then( (ret) => {
         homeData.news = ret;
     })
@@ -21,8 +21,15 @@ post('/news', async (ctx,next) => {
     await api.get_home_newcpy().then( ret => {
         homeData.newCpy = ret;
     })
-    console.log(homeData)
     ctx.body = { status:200, data:homeData}
 })
+
+.post('/detail', async (ctx,next) => {
+    const token = ctx.header.authorization;
+    if(!token){
+        ctx.body = { status: 401, msg: '未登录' }
+        throw new Error('未登录')
+    }
+ })
 
 module.exports = router;

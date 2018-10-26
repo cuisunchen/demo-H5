@@ -9,11 +9,16 @@
   "author": "lava",
   "license": "ISC",
   "dependencies": {
+    "es6-promise": "^4.2.5",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.3.0",
     "koa": "2.5.3",
     "koa-bodyparser": "^4.2.0",
+    "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.5",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "promise-polyfill": "^8.1.0"
   }
 }

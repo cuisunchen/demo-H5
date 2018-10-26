@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const vuxLoader = require('vux-loader')
+
+// const webpack = require('webpack')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -83,7 +85,11 @@ const webpackConfig = {
 
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: [
+    // new webpack.ProvidePlugin({
+    //   $:'jquery',
+    //   jquery:"jquery"
+    // }),
     {name:'vux-ui'},
-    {name: 'duplicate-style'}
+    {name: 'duplicate-style'},
   ]
 })

@@ -8,9 +8,10 @@
         <router-view/>
     </div>
     
-    <div class="foot" v-if="hide">      
+    <div class="foot border-1px-t" v-if="hide">      
       <router-link :to="item.pageUrl" tag="div" class="tab_item" v-for="(item,index) in tab" :key="index">
-        <p>{{item.name}}</p>
+        <p class="p_ico"><span class="iconfont" :class="item.icoClass"></span></p>
+        <p class="name">{{item.name}}</p>
       </router-link>
     </div>
     <toast v-model="tipSet.showPositionValue" type="text" :time="2000" is-show-mask :text="tip" :position="tipSet.position"></toast> 
@@ -34,11 +35,11 @@ export default {
       },
       hide:true,
       tab:[
-        {name:'首页',icoUrl:'',pageUrl:'/home'},
-        {name:'搜老板',icoUrl:'',pageUrl:'/searchBoss'},
-        {name:'情报局',icoUrl:'',pageUrl:'/infos'},
-        {name:'企业库',icoUrl:'',pageUrl:'/news'},
-        {name:'我的',icoUrl:'',pageUrl:'/mine'},
+        {name:'首页',icoClass:'icon-guanlianshebei',pageUrl:'/home'},
+        {name:'搜老板',icoClass:'icon-hezuohuobanmiyueguanli',pageUrl:'/searchBoss'},
+        {name:'情报局',icoClass:'icon-wuxiandianbo',pageUrl:'/infos'},
+        {name:'企业库',icoClass:'icon-jinggai',pageUrl:'/cpy_store'},
+        {name:'我的',icoClass:'icon-icon_zhanghao',pageUrl:'/mine'}
       ],
       defaultTabIndex:0,
     }
@@ -53,9 +54,9 @@ export default {
     if(this.$route.path == '/login'){
       this.hide = false;
     }
-    if( !sessionObj('userName') ){
-        this.$router.push('/login')
-    }
+    // if( !sessionObj('userName') ){
+    //     this.$router.push('/login')
+    // }
     this.init();
   },
   methods:{
@@ -83,6 +84,7 @@ export default {
     $route(to){
       if(to.path == '/login'){
         this.hide = false;
+        localStorage.removeItem('token')
       }else{
         this.hide = true;
         this.setHead(headConfig[to.path])
@@ -113,8 +115,11 @@ export default {
 </script>
 
 <style lang="less">
+@import "common/css/base.less";
+@import "assets/ico/iconfont.css";
 html,body{
     height: 100%;
+      font-size: .12rem;  
     background-color: #f4f4f4;
 }
 #app {
@@ -122,7 +127,7 @@ html,body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
-  font-size: .12rem;  
+
   >.head{
     position: fixed;
     top: 0;
@@ -130,24 +135,38 @@ html,body{
     width: 100%;  
     z-index: 9;  
   }
-  >.content{
+  >.content{    
     padding: 46px 0 .5rem;
   }
   >.foot{
     position: fixed;
     bottom: 0;
     width: 100%;
+    padding: .06rem 0;
     display: flex;
-    background-color: #000;
+    background-color: #fff;
+    
     .tab_item{
       flex: auto;
       text-align: center;
-      color: #fff;
+      color: #666;
       font-size: .14rem;
-      line-height: .5rem;
+      // line-height: .5rem;
+      .p_ico{
+        margin-bottom: .04rem;
+        .iconfont{
+          display: inline-block;
+          width: .2rem;
+          height: .2rem;
+          font-size: .20rem;
+        }
+      }
+      .name{
+        font-size: .12rem;
+      }
     }
     .router-link-exact-active{
-      color: red;
+      color: #1FB5FC;;
     }
   }
   

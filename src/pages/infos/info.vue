@@ -1,6 +1,8 @@
-<!--  -->
+<!-- 企业库 -->
 <template>
-    <div>信息</div>
+    <div>
+        
+    </div>
 </template>
 
 <script>

@@ -21,7 +21,7 @@
         <div class="news">
             <p class="title">新闻阅读</p>
             <div class="con">
-                <div class="newItem" v-for="(item,index) in news" :key="index">
+                <div class="newItem" v-for="(item,index) in news" :key="index" @click="godetail">
                     <div class="imgBox">
                         <img :src="item.imgUrl" alt="" srcset="">
                     </div>
@@ -60,6 +60,7 @@
 <script>
 import { Panel } from 'vux'
 import api from "../../common/js/api.js"
+import fetch from "../../common/js/fetch.js"
  export default {
     name:'',
     data () {
@@ -76,11 +77,22 @@ import api from "../../common/js/api.js"
         this.getNews();
     },
     methods: {
-        onImgError (item, $event) {
-            console.log(item, $event)
+        godetail(){
+            // fetch('/api/api/elm/home/news',{method:'post'})
+            // .then( res => {
+            //     console.log(res)
+            // })
+            fetch('/home/detail','POST',...{})
+            .then( res => {
+                console.log(res)
+            })
         },
+        // onImgError (item, $event) {
+        //     console.log(item, $event)
+        // },
         getNews(){
             api.getNews().then(ret => {
+                console.log(ret)
                 if( ret.data.status == 200 ){
                     this.news = ret.data.data.news
                     this.hots = ret.data.data.hot
@@ -246,6 +258,9 @@ import api from "../../common/js/api.js"
             }
             .itemWrap{
                 .item{
+                    &:last-child{
+                        margin: 0;
+                    }
                     color: #333;
                     margin-bottom: .1rem;
                     .cpyName{                        

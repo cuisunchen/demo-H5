@@ -15,7 +15,6 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -49,4 +48,19 @@ input{
 em,i{
 	font-style: normal;
 	display: inline-block;
+}
+img{
+	border: none;
+	outline: none;
+}
+img[src=""]{
+	opacity: 0;
+}
+.clearFloat::before{
+	content:'';
+	display: block;
+	clear: both;
+}
+html,body{
+	font-size: .12rem;
 }

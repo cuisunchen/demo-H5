@@ -3,9 +3,13 @@ const Static = require('koa-static')
 const BodyParser = require("koa-bodyparser")
 const path = require('path')
 const cors = require("koa2-cors")
+const jwt = require("jsonwebtoken")
+const jwtKoa = require("koa-jwt")
 
 const routes = require("./routes")
 const app = new Koa();
+
+const secret = 'jwt demo'
 
 app.use(cors({
     origin(ctx){
@@ -16,11 +20,14 @@ app.use(cors({
     exposeHeaders:['WWW-Authenticate', 'Server-Authorization'],
     maxAge:5,
     credentials: true,
-    allowMethods: ['GET', 'POST', 'DELETE','OPTIONS'],
+    allowMethods: ['GET', 'POST', 'DELETE','OPTIONS','fetch'],
     allowHeaders: ['Access-Control-Allow-Headers','Content-Type', 'Authorization', 'Accept'],
 }))
 
 app.use(BodyParser())
+app.use(jwtKoa({secret}).unless({
+    path:[/^\/api\/elm\/user/,/^\/api\/elm\/home/]   //  数组种的路径不需要通过jwt验证
+}))
 
 routes(app)
 // app.use(Static(path.join(__dirname,'../')))

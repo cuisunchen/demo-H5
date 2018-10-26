@@ -4,7 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from '@/store'
+import Promise from "promise-polyfill"
 
+
+if(!window.Promise){
+  window.Promise = Promise;
+}
 
 const FastClick = require('fastclick')
 FastClick.attach(document.body)
