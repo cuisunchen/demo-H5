@@ -15,8 +15,10 @@
     "koa": "2.5.3",
     "koa-bodyparser": "^4.2.0",
     "koa-jwt": "^3.5.1",
+    "koa-route": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
+    "koa-websocket": "^5.0.1",
     "koa2-cors": "^2.0.5",
     "mysql": "^2.16.0",
     "promise-polyfill": "^8.1.0"

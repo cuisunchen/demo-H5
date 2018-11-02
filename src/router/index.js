@@ -7,6 +7,7 @@ import cpy_store from '@/pages/cpyStore/cpy_store'
 import info from '@/pages/infos/info'
 import news from '@/pages/news/new'
 import mine from '@/pages/mine/mine'
+import cus from '@/pages/customer/customer'
 
 
 Vue.use(Router)
@@ -47,6 +48,11 @@ const router = new Router({
       path: '/mine',
       name: 'mine',
       component: mine
+    },
+    {
+      path: '/cus',
+      name: 'cus',
+      component: cus
     },
     {
       path: '/login',

@@ -5,7 +5,6 @@ const localUrl = "/api/api/elm";
 export default async ( url = '', type = 'GET', method = 'fetch', data = {})=>{
     type = type.toUpperCase();
     url = localUrl + url;
-    debugger
     //  get请求
     if( type == 'GET' ){
         let dataStr = '';   //  GET请求  在url上拼接数据

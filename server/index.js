@@ -5,9 +5,11 @@ const path = require('path')
 const cors = require("koa2-cors")
 const jwt = require("jsonwebtoken")
 const jwtKoa = require("koa-jwt")
-
+const websocket =  require('koa-websocket')
+const route = require('koa-route')
 const routes = require("./routes")
-const app = new Koa();
+// const app = new Koa();
+const app = websocket(new Koa());
 
 const secret = 'jwt demo'
 
@@ -28,7 +30,21 @@ app.use(BodyParser())
 app.use(jwtKoa({secret}).unless({
     path:[/^\/api\/elm\/user/,/^\/api\/elm\/home/]   //  数组种的路径不需要通过jwt验证
 }))
-
+let ctxs = [];
+app.ws.use(function(ctx, next) {
+    console.log(1)
+    ctxs.push(ctx)
+    return next(ctx);
+  });
+   
+  // Using routes
+app.ws.use(route.all('/', function (ctx) {
+    console.log(2)
+    ctx.websocket.send('Hello World');
+    ctx.websocket.on('message', function(message) {
+            console.log(message);
+    });
+}));
 routes(app)
 // app.use(Static(path.join(__dirname,'../')))
 

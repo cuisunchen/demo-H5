@@ -136,7 +136,7 @@ html,body{
     z-index: 9;  
   }
   >.content{    
-    padding: 46px 0 .5rem;
+    padding: 46px 0 .48rem;
   }
   >.foot{
     position: fixed;

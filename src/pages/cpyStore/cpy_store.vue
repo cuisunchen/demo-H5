@@ -49,6 +49,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="rz_item  border-1px-b">
+                            <div class="userImg">
+                                <img src="./imgs/img7.png" alt="">
+                            </div>
+                            <div class="infos">
+                                <div class="infoBox">
+                                    <p class="p_info">
+                                        <span class="cpyName">芝兰科技</span> <span class="rz_status">天使轮</span> <span class="time">今天</span>
+                                    </p>
+                                    <p class="p_type"><span class="cpyType">企业服务</span> <span class="addr">浙江</span></p>
+                                </div>
+                                <div class="contxt">
+                                    芝兰科技活树百万元天使轮融资，为企业提供多场景底数无人驾驶解决方案
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </parcel>
                 <parcel class="list">
@@ -175,10 +191,8 @@ import Parcel from '../../base/parcel/parcel.vue'
             selectedIndex: 0,
             currentIndex: 0,
             isLoadingShow:false,
-
         };
     },
-
     computed: {},
     methods: {
         changeType(){
@@ -228,12 +242,7 @@ import Parcel from '../../base/parcel/parcel.vue'
                 color: #1FB5FC;
             }
             .content{
-                position: relative; 
-                .list{
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    top: 0;                    
+                .list{                                       
                     padding: 0 .1rem;
                     background-color: #fff;
                     .rz_item{

@@ -51,7 +51,7 @@
                 <span>意见反馈</span>
                 <em><i class="iconfont icon-jiantou"></i></em>                
             </div>
-            <div class="item clearFloat border-1px-t">
+            <div class="item clearFloat border-1px-t" @click="goCustomer">
                 <span>联系客服</span>
                 <em><i class="iconfont icon-jiantou"></i></em>                
             </div>
@@ -140,7 +140,11 @@
     },
 
     computed: {},
-    methods: {},
+    methods: {
+        goCustomer(){
+            this.$router.push({path:'/cus'})
+        }
+    },
     components: {},
 }
 </script>
